@@ -1,0 +1,24 @@
+{
+  "name": "CharV-OAS",
+  "version": "0.1.0",
+  "repository": "ssh://git@github.com/CharVstack/CharV-OAS",
+  "license": "MIT",
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.5.1",
+    "@stoplight/spectral-cli": "^6.4.0",
+    "lint-staged": "^12.4.2",
+    "rimraf": "^3.0.2",
+    "simple-git-hooks": "^2.8.0"
+  },
+  "lint-staged": {
+    "./src/v1.yaml": "spectral lint ./src/v1.yaml"
+  },
+  "scripts": {
+    "lint": "spectral lint ./src/v1.yaml",
+    "generate:typescript": "rimraf ./frontend/src/api-hooks/client/v1 && openapi-generator-cli generate -g typescript-fetch -i ./src/v1.yaml -o ./frontend/src/api-hooks/client/v1 --additional-properties=typescriptThreePlus=true --additional-properties=withInterfaces=true && prettier --write ./frontend/src/api-hooks/client/v1",
+    "generate:go": "rimraf ./backend/models && openapi-generator-cli generate -g go-gin-server -i ./src/v1.yaml -o ./backend/models/v1 && goimports -w ./backend/models/"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "yarn run lint-staged"
+  }
+}
