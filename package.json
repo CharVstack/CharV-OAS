@@ -16,7 +16,7 @@
   },
   "scripts": {
     "lint": "spectral lint ./src/v1.yaml",
-    "generate:typescript": "rimraf ./frontend/src/api-hooks/client/v1 && openapi-generator-cli generate -g typescript-fetch -i ./src/v1.yaml -o ./frontend/src/api-hooks/client/v1 --additional-properties=typescriptThreePlus=true --additional-properties=withInterfaces=true && prettier --write ./frontend/src/api-hooks/client/v1",
+    "generate:typescript": "rimraf ./frontend/src/api-hooks/client/v1 && openapi-generator-cli generate -g typescript-fetch -i ./src/v1.yaml -o ./frontend/src/api-hooks/client/v1 --additional-properties=typescriptThreePlus=true --additional-properties=withInterfaces=true",
     "generate:go": "rimraf ./backend/models && openapi-generator-cli generate -g go-gin-server -i ./src/v1.yaml -o ./backend/models/v1 && goimports -w ./backend/models/",
     "test": "redoc-cli test ./src/v1.yaml",
     "bundle": "redoc-cli bundle ./src/v1.yaml -o docs/index.html",

@@ -50,9 +50,16 @@ jobs:
         token: ${{ steps.generate_token.outputs.token }}
         repository: CharVstack/CharV-frontend
         path: frontend
+
+    - run: yarn install --forzen-lockfile
+      working-directory: ./frontend
         
     - name: Generate
       run: yarn generate:typescript
+
+    - name: Run Prettier
+      run: yarn fix:prettier
+      working-directory: ./frontend
     
     - uses: peter-evans/create-pull-request@v4
       with:
