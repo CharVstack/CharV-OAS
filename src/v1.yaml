@@ -31,7 +31,15 @@ paths:
                           type: string
                   total:
                     type: integer
-              examples: {}
+              examples:
+                example-1:
+                  value:
+                    vms:
+                      - cpu: 0
+                        memory: 0
+                        id: string
+                        name: string
+                    total: 0
       operationId: get-api-v1-vm
       parameters:
         - schema:
@@ -44,11 +52,6 @@ paths:
           in: query
           name: limit
           description: レスポンスの終了位置
-        - schema:
-            type: array
-          in: query
-          name: fields
-          description: 取得するフィールド
     post:
       summary: VMの作成
       tags: []
@@ -80,14 +83,23 @@ paths:
             application/json:
               schema:
                 type: object
-                properties: {}
+                properties:
+                  cpu:
+                    type: integer
+                  memory:
+                    type: integer
+                  id:
+                    type: string
+                  name:
+                    type: string
+                x-examples:
+                  example-1:
+                    cpu: 0
+                    memory: 0
+                    id: string
+                    name: string
       operationId: get-vm-vmId
-      parameters:
-        - schema:
-            type: array
-          in: query
-          name: fields
-          description: 取得するフィールド
+      parameters: []
     delete:
       summary: VMの削除
       tags: []

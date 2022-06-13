@@ -7,6 +7,7 @@
     "@openapitools/openapi-generator-cli": "^2.5.1",
     "@stoplight/spectral-cli": "^6.4.0",
     "lint-staged": "^12.4.2",
+    "npm-run-all": "^4.1.5",
     "redoc-cli": "^0.13.14",
     "rimraf": "^3.0.2",
     "simple-git-hooks": "^2.8.0"
@@ -18,7 +19,9 @@
     "lint": "spectral lint ./src/v1.yaml",
     "generate:typescript": "rimraf ./frontend/src/api-hooks/client/v1 && openapi-generator-cli generate -g typescript-fetch -i ./src/v1.yaml -o ./frontend/src/api-hooks/client/v1 --additional-properties=typescriptThreePlus=true --additional-properties=withInterfaces=true",
     "generate:go": "rimraf ./backend/models && openapi-generator-cli generate -g go-gin-server -i ./src/v1.yaml -o ./backend/models/v1 && goimports -w ./backend/models/",
-    "test": "redoc-cli test ./src/v1.yaml",
+    "test": "npm-run-all test:*",
+    "test:redoc": "redoc-cli test ./src/v1.yaml",
+    "test:oas": "openapi-generator-cli validate -i ./src/v1.yaml",
     "bundle": "redoc-cli bundle ./src/v1.yaml -o docs/index.html",
     "prepare": "simple-git-hooks"
   },
