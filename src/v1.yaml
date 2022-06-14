@@ -114,7 +114,4 @@ paths:
         '200':
           description: OK
 servers:
-  - url: '{server}/api/v1'
-    variables:
-      server:
-        default: http://localhost:8080
+  - url: '/api/v1'

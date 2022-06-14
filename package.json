@@ -22,7 +22,7 @@
     "test": "npm-run-all test:*",
     "test:redoc": "redoc-cli test ./src/v1.yaml",
     "test:oas": "openapi-generator-cli validate -i ./src/v1.yaml",
-    "bundle": "redoc-cli bundle ./src/v1.yaml -o docs/index.html",
+    "build": "redoc-cli build ./src/v1.yaml -o docs/index.html",
     "prepare": "simple-git-hooks"
   },
   "simple-git-hooks": {
