@@ -22,7 +22,7 @@ jobs:
       with:
         app_id: ${{ secrets.APP_ID }}
         private_key: ${{ secrets.PRIVATE_KEY }}
-        repository: CharVstack/CharV-backend
+        repository: CharVstack/CharV-frontend
 
     - name: Setup node
       uses: actions/setup-node@v3
@@ -60,6 +60,9 @@ jobs:
     - name: Run Prettier
       run: yarn fix:prettier
       working-directory: ./frontend
+
+    - name: Copy Schema
+      run: cp ./src/v1.yaml ./frontend/src/openapi-spec/v1.yaml
     
     - uses: peter-evans/create-pull-request@v4
       with:
