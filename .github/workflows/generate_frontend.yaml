@@ -60,6 +60,9 @@ jobs:
     - name: Run Prettier
       run: yarn fix:prettier
       working-directory: ./frontend
+
+    - name: Copy Schema
+      run: cp ./src/v1.yaml ./frontend/src/api-spec/v1.yaml
     
     - uses: peter-evans/create-pull-request@v4
       with:
