@@ -55,7 +55,7 @@ jobs:
       working-directory: ./frontend
         
     - name: Generate
-      run: yarn generate:typescript
+      run: yarn generate:typescript:v1
 
     - name: Run Prettier
       run: yarn fix:prettier
