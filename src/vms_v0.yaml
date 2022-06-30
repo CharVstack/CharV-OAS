@@ -1,0 +1,173 @@
+openapi: 3.1.0
+x-stoplight:
+  id: mf7vb64un6ix1
+info:
+  title: vms
+  version: '0.0'
+  description: ''
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  '/api/v0/vms/{id}':
+    get:
+      summary: get VM
+      tags:
+        - vm
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  metadata:
+                    type: object
+                    properties:
+                      api-version:
+                        type: string
+                      id:
+                        type: string
+                  memory:
+                    type: number
+                  vcpu:
+                    type: number
+                  devices:
+                    type: object
+                    properties:
+                      disk:
+                        type: array
+                        items:
+                          type: object
+                          properties:
+                            type:
+                              type: string
+                            device:
+                              type: string
+                            path:
+                              type: string
+      operationId: get-api-v0-vm
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required:
+    patch:
+      summary: ''
+      operationId: patch-api-v0-vms-id
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                memory:
+                  type: number
+                vcpu:
+                  type: number
+      parameters: []
+  /api/v0/vms:
+    post:
+      summary: create VM
+      tags: []
+      responses: {}
+      operationId: post-api-v0-vms
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                memory:
+                  type: number
+                vcpu:
+                  type: number
+        description: ''
+    get:
+      summary: get all VMs list
+      tags:
+        - vm
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  vms:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        metadata:
+                          type: object
+                          properties:
+                            api-version:
+                              type: string
+                            id:
+                              type: string
+                        memory:
+                          type: number
+                        vcpu:
+                          type: number
+                        devices:
+                          type: object
+                          properties:
+                            disk:
+                              type: array
+                              items:
+                                type: object
+                                properties:
+                                  type:
+                                    type: string
+                                  disk:
+                                    type: string
+                                  path:
+                                    type: string
+      operationId: get-api-v0-vms
+components:
+  schemas:
+    vm:
+      title: vm
+      x-stoplight:
+        id: dp4bw18mfaj3s
+      type: object
+      properties:
+        name:
+          type: string
+        metadata:
+          type: object
+          properties:
+            api-version:
+              type: string
+            id:
+              type: string
+        memory:
+          type: number
+        vcpu:
+          type: number
+        devices:
+          type: object
+          properties:
+            disk:
+              type: object
+              properties:
+                type:
+                  type: string
+                device:
+                  type: string
+                path:
+                  type: string
