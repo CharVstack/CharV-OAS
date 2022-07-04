@@ -2,7 +2,7 @@ name: Build Redoc
 
 on:
   push:
-    branch:
+    branches:
       - main
   workflow_dispatch:
 
@@ -35,7 +35,7 @@ jobs:
 
       - run: yarn install --frozen-lockfile
 
-      - run: yarn build
+      - run: yarn build:v1
 
       - name: pages deploy
         uses: peaceiris/actions-gh-pages@v3
