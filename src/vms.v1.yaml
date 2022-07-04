@@ -1,6 +1,4 @@
-openapi: 3.1.0
-x-stoplight:
-  id: 291epccbgj72d
+openapi: 3.0.0
 info:
   title: vms.v1
   version: '0.0'
@@ -131,8 +129,6 @@ components:
   schemas:
     vm:
       title: vm
-      x-stoplight:
-        id: 5txew3qu80ak2
       type: object
       x-tags:
         - vm
