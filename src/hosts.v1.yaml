@@ -1,0 +1,52 @@
+openapi: 3.1.0
+x-stoplight:
+  id: byqd0dmdcfvg3
+info:
+  title: hosts.v1
+  version: '0.0'
+servers:
+  - url: 'http://localhost:3000'
+paths:
+  /api/v1/host:
+    get:
+      summary: Get a host
+      tags:
+        - host
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  cpu:
+                    type: integer
+                  memory:
+                    type: integer
+                  storage_pools:
+                    $ref: '#/components/schemas/storage'
+      operationId: get-api-v1-host
+    parameters: []
+components:
+  schemas:
+    storage:
+      title: storage
+      x-stoplight:
+        id: efupnnj1o9i6j
+      type: object
+      properties:
+        name:
+          type: string
+        total_size:
+          type: integer
+        used_size:
+          type: integer
+        path:
+          type: string
+        status:
+          type: string
+      x-tags:
+        - host
+tags:
+  - name: host
