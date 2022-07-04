@@ -21,7 +21,7 @@
     "generate:go": "rimraf ./backend/models && openapi-generator-cli generate -g go-gin-server -i ./src/* -o ./backend/models/v1 && goimports -w ./backend/models/",
     "test": "npm-run-all test:*",
     "test:redoc": "redoc-cli test ./src/*",
-    "test:oas": "openapi-generator-cli validate -i ./src/*",
+    "test:oas": "find ./src -name \"*.yaml\" | xargs -I {} openapi-generator-cli validate -i {}",
     "build": "redoc-cli build ./src/* -o docs/index.html",
     "prepare": "simple-git-hooks"
   },

@@ -1,6 +1,4 @@
 openapi: 3.0.0
-x-stoplight:
-  id: byqd0dmdcfvg3
 info:
   title: hosts.v1
   version: '0.0'
@@ -32,8 +30,6 @@ components:
   schemas:
     storage:
       title: storage
-      x-stoplight:
-        id: efupnnj1o9i6j
       type: object
       properties:
         name:
