@@ -2,12 +2,12 @@ openapi: 3.0.0
 x-stoplight:
   id: 291epccbgj72d
 info:
-  title: vms.v1
+  title: v1
   version: '1.0'
 servers:
-  - url: http://localhost:3000
+  - url: http://localhost:3000/api/v1
 paths:
-  /api/v1/vms:
+  /vms:
     post:
       summary: Create a new VM
       responses:
@@ -69,7 +69,7 @@ paths:
       operationId: get-api-v1-vms
       tags:
         - vm
-  /api/v1/vms/{vmId}:
+  /vms/{vmId}:
     parameters:
       - schema:
           type: string
@@ -127,7 +127,7 @@ paths:
                   name: centos_stream
                   memory: 1024
                   vcpu: 2
-  /api/v1/host:
+  /host:
     get:
       summary: Get a host
       tags:
@@ -141,13 +141,24 @@ paths:
                 type: object
                 properties:
                   cpu:
-                    type: string
+                    type: integer
                   memory:
                     type: integer
                   storage_pools:
                     type: array
                     items:
                       $ref: '#/components/schemas/storage_pool'
+              examples:
+                example-1:
+                  value:
+                    cpu: 4
+                    memory: 2048
+                    storage_pools:
+                      - name: default
+                        total_size: 20000
+                        used_size: 10000
+                        path: /var/lib/libvirt/images
+                        status: active
       operationId: get-api-v1-host
 components:
   schemas:
