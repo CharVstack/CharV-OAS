@@ -59,8 +59,8 @@ jobs:
         path: backend
         
     - name: Generate
-      run: yarn generate:go
-    
+      run: yarn generate:go:v1
+
     - uses: peter-evans/create-pull-request@v4
       with:
         token: ${{ steps.generate_token.outputs.token }}
