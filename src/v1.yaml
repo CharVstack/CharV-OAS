@@ -2,7 +2,7 @@ openapi: 3.0.0
 x-stoplight:
   id: 291epccbgj72d
 info:
-  title: v1
+  title: CharVstack-API
   version: '1.0'
 servers:
   - url: http://localhost:3000/api/v1
