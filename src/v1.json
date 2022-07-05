@@ -221,10 +221,10 @@
                   "type": "object",
                   "properties": {
                     "cpu": {
-                      "type": "integer"
+                      "$ref": "#/components/schemas/cpu"
                     },
-                    "memory": {
-                      "type": "integer"
+                    "mem": {
+                      "$ref": "#/components/schemas/memory"
                     },
                     "storage_pools": {
                       "type": "array",
@@ -237,8 +237,16 @@
                 "examples": {
                   "example-1": {
                     "value": {
-                      "cpu": 4,
-                      "memory": 2048,
+                      "cpu": {
+                        "cpu": 4,
+                        "cpu_mhz": 0
+                      },
+                      "mem": {
+                        "total": 2048,
+                        "used": 0,
+                        "free": 0,
+                        "used_percent": 20
+                      },
                       "storage_pools": [
                         {
                           "name": "default",
@@ -310,6 +318,48 @@
                 }
               }
             }
+          }
+        }
+      },
+      "cpu": {
+        "title": "cpu",
+        "x-stoplight": {
+          "id": "fph02iclwns7j"
+        },
+        "type": "object",
+        "properties": {
+          "cpu": {
+            "type": "integer"
+          },
+          "cpu_mhz": {
+            "type": "number"
+          }
+        },
+        "x-tags": [
+          "host"
+        ]
+      },
+      "memory": {
+        "title": "memory",
+        "x-stoplight": {
+          "id": "dgl6tqiyb7itd"
+        },
+        "type": "object",
+        "x-tags": [
+          "host"
+        ],
+        "properties": {
+          "total": {
+            "type": "integer"
+          },
+          "used": {
+            "type": "integer"
+          },
+          "free": {
+            "type": "integer"
+          },
+          "used_percent": {
+            "type": "number"
           }
         }
       },
