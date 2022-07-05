@@ -62,7 +62,7 @@ jobs:
       working-directory: ./frontend
 
     - name: Copy Schema
-      run: cp ./src/v1.yaml ./frontend/src/openapi-spec/v1.yaml
+      run: cp ./src/v1.json ./frontend/src/openapi-spec/v1.json
     
     - uses: peter-evans/create-pull-request@v4
       with:
