@@ -19,8 +19,8 @@
   },
   "scripts": {
     "lint": "spectral lint ./src/*",
-    "generate:go:v1": "rimraf ./backend/models && openapi-generator-cli generate -g go-gin-server -i ./src/v1.json -o ./backend/v1 && goimports -w ./backend/v1",
-    "generate:typescript:v1": "rimraf ./frontend/src/api-hooks/v1 && openapi2aspida",
+    "generate:go:v1": "openapi-generator-cli generate -g go-gin-server -i ./src/v1.json -o ./backend/v1 && goimports -w ./backend/v1",
+    "generate:typescript:v1": "openapi2aspida",
     "test": "npm-run-all test:*",
     "test:redoc": "redoc-cli test ./src/*",
     "test:oas": "find ./src -name \"*.json\" -exec openapi-generator-cli validate -i {} \\;",
