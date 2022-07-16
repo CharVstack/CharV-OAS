@@ -19,7 +19,7 @@
   },
   "scripts": {
     "lint": "spectral lint ./src/*",
-    "generate:go:v1": "CONTAINER_ID=`docker create CharVstack/charV_backend:latest` && docker cp $CONTAINER_ID:/go/backend . && docker rm $CONTAINER_ID &&  && goimports -w ./backend/v1",
+    "generate:go:v1": "CONTAINER_ID=`docker create CharVstack/charV_backend:latest` && docker cp $CONTAINER_ID:/go/backend . && docker rm $CONTAINER_ID && goimports -w ./backend/v1",
     "generate:typescript:v1": "openapi2aspida",
     "test": "npm-run-all test:*",
     "test:redoc": "redoc-cli test ./src/*",
