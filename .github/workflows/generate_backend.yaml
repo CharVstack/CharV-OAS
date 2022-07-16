@@ -26,7 +26,7 @@ jobs:
 
       - name: Setup Docker
         uses: docker-practice/actions-setup-docker@master
-        run: |
+      - run: |
           set -x
           docker version
           docker build -t CharVstack/charV_backend:latest
