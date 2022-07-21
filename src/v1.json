@@ -9,11 +9,11 @@
   },
   "servers": [
     {
-      "url": "http://localhost:3000/api/v1"
+      "url": "http://localhost:3000"
     }
   ],
   "paths": {
-    "/vms": {
+    "/api/v1/vms": {
       "post": {
         "summary": "Create a new VM",
         "responses": {
@@ -58,7 +58,8 @@
         },
         "tags": [
           "vm"
-        ]
+        ],
+        "description": "VMを作成する"
       },
       "get": {
         "summary": "Get all VMs list",
@@ -113,10 +114,12 @@
         "operationId": "get-api-v1-vms",
         "tags": [
           "vm"
-        ]
-      }
+        ],
+        "description": "全てのVM一覧を取得する"
+      },
+      "parameters": []
     },
-    "/vms/{vmId}": {
+    "/api/v1/vms/{vmId}": {
       "parameters": [
         {
           "schema": {
@@ -165,11 +168,12 @@
             }
           }
         },
-        "operationId": "get-api-v1-vms-vmId"
+        "operationId": "get-api-v1-vms-:vmId",
+        "description": "個々のVM情報を取得する"
       },
       "patch": {
         "summary": "Update a VM",
-        "operationId": "patch-api-v1-vms-vmId",
+        "operationId": "patch-api-v1-vms-:vmId",
         "responses": {
           "200": {
             "description": "OK"
@@ -206,10 +210,11 @@
               }
             }
           }
-        }
+        },
+        "description": "VM情報を更新する"
       }
     },
-    "/host": {
+    "/api/v1/host": {
       "get": {
         "summary": "Get a host",
         "tags": [
@@ -271,8 +276,10 @@
             }
           }
         },
-        "operationId": "get-api-v1-host"
-      }
+        "operationId": "get-api-v1-host",
+        "description": "ホスト情報を取得する"
+      },
+      "parameters": []
     }
   },
   "components": {
