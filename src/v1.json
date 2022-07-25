@@ -237,7 +237,7 @@
                     "storage_pools": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/storage_pool"
+                        "$ref": "#/components/schemas/storagePool"
                       }
                     }
                   },
@@ -398,8 +398,8 @@
           "used_percent"
         ]
       },
-      "storage_pool": {
-        "title": "storage_pool",
+      "storagePool": {
+        "title": "storagePool",
         "type": "object",
         "x-tags": [
           "host"
