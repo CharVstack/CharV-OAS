@@ -234,7 +234,7 @@
                     "mem": {
                       "$ref": "#/components/schemas/memory"
                     },
-                    "storage_pools": {
+                    "storagePools": {
                       "type": "array",
                       "items": {
                         "$ref": "#/components/schemas/storagePool"
@@ -244,7 +244,7 @@
                   "required": [
                     "cpu",
                     "mem",
-                    "storage_pools"
+                    "storagePools"
                   ]
                 },
                 "examples": {
@@ -260,7 +260,7 @@
                         "free": 315400192,
                         "used_percent": 53.54776174371394
                       },
-                      "storage_pools": [
+                      "storagePools": [
                         {
                           "name": "string",
                           "total_size": 1006530654208,
