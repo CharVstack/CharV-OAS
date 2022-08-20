@@ -190,17 +190,17 @@
                     "mem": {
                       "$ref": "#/components/schemas/memory"
                     },
-                    "storage_pools": {
+                    "storagePools": {
                       "type": "array",
                       "items": {
-                        "$ref": "#/components/schemas/storage_pool"
+                        "$ref": "#/components/schemas/storagePool"
                       }
                     }
                   },
                   "required": [
                     "cpu",
                     "mem",
-                    "storage_pools"
+                    "storagePools"
                   ]
                 },
                 "examples": {}
@@ -365,8 +365,8 @@
         },
         "description": "ホストのメモリ情報"
       },
-      "storage_pool": {
-        "title": "storage_pool",
+      "storagePool": {
+        "title": "storagePool",
         "type": "object",
         "x-tags": [
           "host"
