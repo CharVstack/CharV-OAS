@@ -346,7 +346,8 @@
             "$ref": "#/components/schemas/type_uint64"
           },
           "used_percent": {
-            "$ref": "#/components/schemas/type_float64"
+            "type": "number",
+            "format": "float"
           }
         },
         "required": [
@@ -416,15 +417,6 @@
         "minimum": 0,
         "maximum": 18446744073709552000,
         "x-go-type": "uint64"
-      },
-      "type_float64": {
-        "title": "type_float64",
-        "x-tags": [
-          "type"
-        ],
-        "type": "number",
-        "x-go-type": "float64",
-        "x-examples": {}
       }
     }
   },
