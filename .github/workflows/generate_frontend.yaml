@@ -1,11 +1,11 @@
 name: Typescript frontend OpenAPIClient Generate
 
 on:
-  pull_request:
-    branches: 
-      - main 
-    types:
-      - closed
+  push:
+    paths:
+      - "./src/v1.json"
+    branches:
+      - "main"
 
 jobs:
   build:
