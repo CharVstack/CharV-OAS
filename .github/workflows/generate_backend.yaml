@@ -8,6 +8,7 @@ on:
       - closed
     paths:
       - "src/v1.json"
+  workflow_dispatch:
 
 jobs:
   build:
