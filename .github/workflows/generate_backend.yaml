@@ -1,11 +1,13 @@
 name: go-gin-server OpenAPIClient Generate
 
 on:
-  push:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
     paths:
       - "./src/v1.json"
-    branches:
-      - "main"
 
 jobs:
   build:
