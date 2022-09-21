@@ -845,14 +845,14 @@ asn1.js@^5.2.0:
     safer-buffer "^2.1.0"
 
 aspida@^1.9.0:
-  version "1.10.2"
-  resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.10.2.tgz#7e175c7ee9abe15339cfef44c12bb50e78c8ddf4"
-  integrity sha512-nkHIA6a0lb6pXQjNYAJCf/SN3pTRJArD1RVQMeXivlcfaa9v5qj8DSC/8KHApM0a3Rz76o1LUyIxXg5yEGrM8w==
+  version "1.11.0"
+  resolved "https://registry.yarnpkg.com/aspida/-/aspida-1.11.0.tgz#a01f75ed3c85929de592afc71802fa1c689a3b7d"
+  integrity sha512-TVQ4bKJQ5nLm6GCZRIzBA8fQe7AhilYkpsQWg0DeBNKm2u7kbulxyCD8xXOqs41Xkrt+jNG7/GGkkseDPgUSOQ==
   dependencies:
     "@types/minimist" "^1.2.2"
-    chokidar "^3.5.1"
+    chokidar "^3.5.3"
     form-data "^4.0.0"
-    minimist "^1.2.5"
+    minimist "^1.2.6"
 
 assert@^1.1.1:
   version "1.5.0"
@@ -1123,7 +1123,7 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
-chokidar@^3.5.1:
+chokidar@^3.5.1, chokidar@^3.5.3:
   version "3.5.3"
   resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.3.tgz#1cf37c8707b932bd1af1ae22c0432e2acd1903bd"
   integrity sha512-Dr3sfKRP6oTcjf2JmUmFJfeVMvXBdegxB0iVQ5eb2V10uFJUCAS8OByZdVAyVb8xXNz3GjjTgj9kLWsZTqE6kw==
@@ -2605,7 +2605,7 @@ minimatch@^5.0.1:
   dependencies:
     brace-expansion "^2.0.1"
 
-minimist@^1.2.5:
+minimist@^1.2.5, minimist@^1.2.6:
   version "1.2.6"
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.6.tgz#8637a5b759ea0d6e98702cfb3a9283323c93af44"
   integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
