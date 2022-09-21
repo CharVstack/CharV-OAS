@@ -3,7 +3,7 @@ name: Typescript frontend OpenAPIClient Generate
 on:
   pull_request:
     paths:
-      - "./src/v1.json"
+      - "src/v1.json"
     types:
       - closed
     branches:
