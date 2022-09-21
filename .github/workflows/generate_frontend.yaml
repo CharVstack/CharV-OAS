@@ -65,6 +65,10 @@ jobs:
       run: yarn fix:eslint
       working-directory: ./frontend
 
+    - name: Check Diff
+      run: ! git diff --exit-code
+      working-direcotry: ./frontend
+
     - name: Copy Schema
       run: cp ./src/v1.json ./frontend/src/openapi-spec/v1.json
     
