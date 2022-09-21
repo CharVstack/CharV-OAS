@@ -1,11 +1,11 @@
 name: Typescript frontend OpenAPIClient Generate
 
 on:
-  pull_request:
-    branches: 
-      - main 
-    types:
-      - closed
+  push:
+    paths:
+      - "./src/v1.json"
+    branches:
+      - "main"
 
 jobs:
   build:
@@ -53,6 +53,9 @@ jobs:
 
     - run: yarn install --forzen-lockfile
       working-directory: ./frontend
+
+    - name: Clean Directory
+      run: rm -rf ./frontend/src/api-hooks/v1
         
     - name: Generate
       run: yarn generate:typescript:v1
@@ -64,6 +67,10 @@ jobs:
     - name: Run ESLint
       run: yarn fix:eslint
       working-directory: ./frontend
+
+    - name: Check Diff
+      run: ! git diff --exit-code
+      working-direcotry: ./frontend
 
     - name: Copy Schema
       run: cp ./src/v1.json ./frontend/src/openapi-spec/v1.json
