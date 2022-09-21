@@ -227,8 +227,8 @@
           "default": {
             "name": "ubuntu20.04",
             "metadata": {
-              "id": "v1",
-              "api_version": "4e0a3c48-f483-422a-b520-2820207cef42"
+              "id": "4e0a3c48-f483-422a-b520-2820207cef42",
+              "api_version": "v1"
             },
             "memory": 2048,
             "vcpu": 4,
