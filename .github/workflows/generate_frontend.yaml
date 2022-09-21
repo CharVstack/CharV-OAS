@@ -68,7 +68,7 @@ jobs:
       working-directory: ./frontend
 
     - name: Run ESLint
-      run: yarn fix:eslint
+      run: yarn eslint --fix 'src/api-hooks/**/*.{js,jsx,ts,tsx}'
       working-directory: ./frontend
 
     - name: Check Diff
