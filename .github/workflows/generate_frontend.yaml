@@ -72,7 +72,7 @@ jobs:
       working-directory: ./frontend
 
     - name: Check Diff
-      run: ! git diff --exit-code
+      run: sh -c '! git diff --exit-code'
       working-directory: ./frontend
 
     - name: Copy Schema

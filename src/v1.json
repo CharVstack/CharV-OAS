@@ -47,7 +47,7 @@
               "examples": {
                 "example-1": {
                   "value": {
-                    "name": "ubuntu20.04",
+                    "name": "Ubuntu20.04",
                     "memory": 2048,
                     "vcpu": 4
                   }
