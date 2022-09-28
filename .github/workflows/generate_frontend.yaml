@@ -56,9 +56,6 @@ jobs:
 
     - run: yarn install --forzen-lockfile
       working-directory: ./frontend
-
-    - name: Clean Directory
-      run: rm -rf ./frontend/src/api-hooks/v1
         
     - name: Generate
       run: yarn generate:typescript:v1
