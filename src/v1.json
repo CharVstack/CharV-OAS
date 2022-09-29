@@ -376,26 +376,25 @@
         "x-tags": [
           "host"
         ],
-        "properties": {
-          "counts": {
-            "type": "integer"
-          },
-          "percent": {
-            "type": "integer",
-            "format": "uint64"
-          }
-        },
-        "required": [
-          "counts",
-          "percent"
-        ],
         "x-examples": {
           "default": {
             "counts": 4,
             "percent": 5
           }
         },
-        "description": "ホストのCPU情報"
+        "description": "ホストのCPU情報",
+        "properties": {
+          "counts": {
+            "type": "integer"
+          },
+          "percent": {
+            "$ref": "#/components/schemas/type_float64"
+          }
+        },
+        "required": [
+          "counts",
+          "percent"
+        ]
       },
       "Memory": {
         "title": "Memory",
@@ -403,6 +402,15 @@
         "x-tags": [
           "host"
         ],
+        "x-examples": {
+          "default": {
+            "total": 16526876672,
+            "used": 8849772544,
+            "free": 315400192,
+            "used_percent": 53.54776174371394
+          }
+        },
+        "description": "ホストのメモリ情報",
         "properties": {
           "total": {
             "$ref": "#/components/schemas/type_uint64"
@@ -414,8 +422,7 @@
             "$ref": "#/components/schemas/type_uint64"
           },
           "used_percent": {
-            "type": "number",
-            "format": "float"
+            "$ref": "#/components/schemas/type_float64"
           }
         },
         "required": [
@@ -423,16 +430,7 @@
           "used",
           "free",
           "used_percent"
-        ],
-        "x-examples": {
-          "default": {
-            "total": 16526876672,
-            "used": 8849772544,
-            "free": 315400192,
-            "used_percent": 53.54776174371394
-          }
-        },
-        "description": "ホストのメモリ情報"
+        ]
       },
       "StoragePool": {
         "title": "StoragePool",
@@ -485,6 +483,15 @@
         "minimum": 0,
         "maximum": 18446744073709552000,
         "x-go-type": "uint64"
+      },
+      "type_float64": {
+        "type": "number",
+        "title": "type_float64",
+        "x-go-type": "float64",
+        "x-tags": [
+          "type"
+        ],
+        "format": "float"
       }
     }
   },
