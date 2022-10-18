@@ -27,13 +27,6 @@ jobs:
           private_key: ${{ secrets.PRIVATE_KEY }}
           repository: CharVstack/CharV-backend
 
-      - name: Setup Docker
-        uses: docker-practice/actions-setup-docker@master
-      - run: |
-          set -x
-          docker version
-          docker build -t char-v_stack/char-v_backend:latest .
-
       - name: Setup node
         uses: actions/setup-node@v3
         with:
@@ -67,9 +60,6 @@ jobs:
           token: ${{ steps.generate_token.outputs.token }}
           repository: CharVstack/CharV-backend
           path: backend
-
-      - name: Generate Types
-        run: yarn generate:go:types:v1
 
       - name: Generate Models
         run: yarn generate:go:models:v1
