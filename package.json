@@ -19,7 +19,9 @@
   },
   "scripts": {
     "lint": "spectral lint ./src/*",
-    "generate:go:v1": "CONTAINER_ID=`docker create char-v_stack/char-v_backend:latest` && docker cp $CONTAINER_ID:/go/backend . && docker rm $CONTAINER_ID && goimports -w ./backend/openapi/v1",
+    "generate:go:types:v1": "oapi-codegen -config gin/types.config.yaml src/v1.json",
+    "generate:go:server:v1": "oapi-codegen -config gin/server.config.yaml src/v1.json",
+    "generate:go:models:v1": "oapi-codegen -config gin/models.config.yaml src/v1.json",
     "generate:typescript:v1": "openapi2aspida",
     "test": "npm-run-all test:*",
     "test:redoc": "redoc-cli test ./src/*",

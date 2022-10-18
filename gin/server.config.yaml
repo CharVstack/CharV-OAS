@@ -1,0 +1,7 @@
+package: repository
+generate:
+  gin-server: true
+  embedded-spec: true
+output: backend/adapters/server.gen.go
+output-options:
+  skip-prune: true
