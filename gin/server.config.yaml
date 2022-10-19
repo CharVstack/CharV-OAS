@@ -1,4 +1,4 @@
-package: repository
+package: adapters
 generate:
   gin-server: true
   embedded-spec: true
