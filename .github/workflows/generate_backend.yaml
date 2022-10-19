@@ -8,7 +8,7 @@ on:
       - closed
     paths:
       - "src/v1.json"
-  workflow_dispatch:
+      - ".github/workflows/generate_backend.yaml"
 
 jobs:
   build:
@@ -71,8 +71,8 @@ jobs:
         with:
           token: ${{ steps.generate_token.outputs.token }}
           path: backend
-          commit-message: auto generated from ${{ (github.event_name == 'pull_request' && github.event.pull_request.html_url) || github.event.head_commit.url }}
-          title: ${{ (github.event_name == 'pull_request' && github.event.pull_request.title) || github.event.head_commit.message }}
-          body: ${{ (github.event_name == 'pull_request' && github.event.pull_request.html_url) || github.event.head_commit.url }}
+          commit-message: auto generated from ${{ github.event.pull_request.html_url }}
+          title: ${{ github.event.pull_request.title }}
+          body: ${{ github.event.pull_request.html_url }}
           branch: feature/codegen
           branch-suffix: short-commit-hash
