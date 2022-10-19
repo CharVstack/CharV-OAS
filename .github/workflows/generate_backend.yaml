@@ -64,8 +64,8 @@ jobs:
       - name: Generate Models
         run: yarn generate:go:models:v1
 
-      - name: Generate Models
-        run: yarn generate:go:models:v1
+      - name: Generate Server
+        run: yarn generate:go:server:v1
 
       - uses: peter-evans/create-pull-request@v4
         with:
