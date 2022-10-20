@@ -343,19 +343,7 @@
             "type": "string"
           },
           "metadata": {
-            "type": "object",
-            "required": [
-              "id",
-              "api_version"
-            ],
-            "properties": {
-              "id": {
-                "type": "string"
-              },
-              "api_version": {
-                "type": "string"
-              }
-            }
+            "$ref": "#/components/schemas/Metadata"
           },
           "memory": {
             "type": "integer"
@@ -364,30 +352,7 @@
             "type": "integer"
           },
           "devices": {
-            "type": "object",
-            "required": [
-              "disk"
-            ],
-            "properties": {
-              "disk": {
-                "type": "array",
-                "items": {
-                  "type": "object",
-                  "properties": {
-                    "type": {
-                      "type": "string"
-                    },
-                    "path": {
-                      "type": "string"
-                    }
-                  },
-                  "required": [
-                    "type",
-                    "path"
-                  ]
-                }
-              }
-            }
+            "$ref": "#/components/schemas/Devices"
           }
         },
         "required": [
@@ -520,6 +485,51 @@
           "type"
         ],
         "format": "float"
+      },
+      "Disk": {
+        "title": "Disk",
+        "x-stoplight": {
+          "id": "tlkfws9brap8f"
+        },
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string"
+          },
+          "path": {
+            "type": "string"
+          }
+        }
+      },
+      "Devices": {
+        "title": "Devices",
+        "x-stoplight": {
+          "id": "ygi3yz6kih90l"
+        },
+        "type": "object",
+        "properties": {
+          "disk": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Disk"
+            }
+          }
+        }
+      },
+      "Metadata": {
+        "title": "Metadata",
+        "x-stoplight": {
+          "id": "rpl1wy0d2lxgs"
+        },
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "api_version": {
+            "type": "string"
+          }
+        }
       }
     }
   },
