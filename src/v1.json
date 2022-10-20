@@ -486,17 +486,17 @@
           "type": {
             "type": "string"
           },
-          "path": {
+          "device": {
             "type": "string"
           },
-          "device": {
+          "path": {
             "type": "string"
           }
         },
         "required": [
           "type",
-          "path",
-          "device"
+          "device",
+          "path"
         ]
       },
       "Devices": {
@@ -530,7 +530,11 @@
           "api_version": {
             "type": "string"
           }
-        }
+        },
+        "required": [
+          "id",
+          "api_version"
+        ]
       }
     }
   },
