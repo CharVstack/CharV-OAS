@@ -38,6 +38,7 @@
                         "disk": [
                           {
                             "type": "qcow2",
+                            "device": "disk",
                             "path": "/var/lib/charVstack/images/cent.qcow2"
                           }
                         ]
@@ -126,6 +127,7 @@
                             "disk": [
                               {
                                 "type": "qcow2",
+                                "device": "disk",
                                 "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
                               }
                             ]
@@ -185,6 +187,7 @@
                         "disk": [
                           {
                             "type": "qcow2",
+                            "device": "disk",
                             "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
                           }
                         ]
@@ -498,8 +501,16 @@
           },
           "path": {
             "type": "string"
+          },
+          "device": {
+            "type": "string"
           }
-        }
+        },
+        "required": [
+          "type",
+          "path",
+          "device"
+        ]
       },
       "Devices": {
         "title": "Devices",
@@ -514,7 +525,10 @@
               "$ref": "#/components/schemas/Disk"
             }
           }
-        }
+        },
+        "required": [
+          "disk"
+        ]
       },
       "Metadata": {
         "title": "Metadata",
