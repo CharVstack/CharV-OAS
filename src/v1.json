@@ -381,7 +381,8 @@
             "type": "integer"
           },
           "percent": {
-            "$ref": "#/components/schemas/type_float64"
+            "type": "number",
+            "format": "double"
           }
         },
         "required": [
@@ -406,16 +407,20 @@
         "description": "ホストのメモリ情報",
         "properties": {
           "total": {
-            "$ref": "#/components/schemas/type_uint64"
+            "type": "integer",
+            "format": "uint64"
           },
           "used": {
-            "$ref": "#/components/schemas/type_uint64"
+            "type": "integer",
+            "format": "uint64"
           },
           "free": {
-            "$ref": "#/components/schemas/type_uint64"
+            "type": "integer",
+            "format": "uint64"
           },
           "used_percent": {
-            "$ref": "#/components/schemas/type_float64"
+            "type": "number",
+            "format": "double"
           }
         },
         "required": [
@@ -431,15 +436,27 @@
         "x-tags": [
           "host"
         ],
+        "x-examples": {
+          "default": {
+            "name": "string",
+            "total_size": 1006530654208,
+            "used_size": 371360915456,
+            "path": "string",
+            "status": "string"
+          }
+        },
+        "description": "ホストが持つストレージプールの情報",
         "properties": {
           "name": {
             "type": "string"
           },
           "total_size": {
-            "$ref": "#/components/schemas/type_uint64"
+            "type": "integer",
+            "format": "uint64"
           },
           "used_size": {
-            "$ref": "#/components/schemas/type_uint64"
+            "type": "integer",
+            "format": "uint64"
           },
           "path": {
             "type": "string"
@@ -454,37 +471,7 @@
           "used_size",
           "path",
           "status"
-        ],
-        "x-examples": {
-          "default": {
-            "name": "string",
-            "total_size": 1006530654208,
-            "used_size": 371360915456,
-            "path": "string",
-            "status": "string"
-          }
-        },
-        "description": "ホストが持つストレージプールの情報"
-      },
-      "type_uint64": {
-        "type": "integer",
-        "title": "type_uint64",
-        "x-tags": [
-          "type"
-        ],
-        "format": "int64",
-        "minimum": 0,
-        "maximum": 18446744073709552000,
-        "x-go-type": "uint64"
-      },
-      "type_float64": {
-        "type": "number",
-        "title": "type_float64",
-        "x-go-type": "float64",
-        "x-tags": [
-          "type"
-        ],
-        "format": "float"
+        ]
       },
       "Disk": {
         "title": "Disk",
