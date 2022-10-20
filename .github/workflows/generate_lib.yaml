@@ -8,7 +8,7 @@ on:
       - closed
     paths:
       - "src/v1.json"
-      - ".github/workflows/generate_backend.yaml"
+      - ".github/workflows/generate_lib.yaml"
       - "gin/*.yaml"
 
 jobs:
@@ -26,7 +26,7 @@ jobs:
         with:
           app_id: ${{ secrets.APP_ID }}
           private_key: ${{ secrets.PRIVATE_KEY }}
-          repository: CharVstack/CharV-backend
+          repository: CharVstack/CharV-lib
 
       - name: Setup node
         uses: actions/setup-node@v3
@@ -59,16 +59,16 @@ jobs:
       - uses: actions/checkout@v3
         with:
           token: ${{ steps.generate_token.outputs.token }}
-          repository: CharVstack/CharV-backend
-          path: backend
+          repository: CharVstack/CharV-lib
+          path: lib
 
-      - name: Generate Server
-        run: yarn generate:go:server:v1
+      - name: Generate Models
+        run: yarn generate:go:models:v1
 
       - uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ steps.generate_token.outputs.token }}
-          path: backend
+          path: lib
           commit-message: auto generated from ${{ github.event.pull_request.html_url }}
           title: ${{ github.event.pull_request.title }}
           body: ${{ github.event.pull_request.html_url }}
