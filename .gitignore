@@ -135,3 +135,4 @@ dist
 # Generated dir
 /frontend
 /backend
+/lib
