@@ -1,4 +1,4 @@
-name: go-gin-server OpenAPIClient Generate
+name: go-lib OpenAPIClient Generate
 
 on:
   pull_request:

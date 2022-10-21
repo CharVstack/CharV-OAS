@@ -1,6 +1,6 @@
 package: models
 generate:
   models: true
-output: lib/pkg/models/models.gen.go
+output: lib/domain/models.gen.go
 output-options:
   skip-prune: true
