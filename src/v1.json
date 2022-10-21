@@ -445,7 +445,7 @@
             "total_size": 1006530654208,
             "used_size": 371360915456,
             "path": "string",
-            "status": "string"
+            "status": "Active"
           }
         },
         "description": "ホストが持つストレージプールの情報",
@@ -465,7 +465,11 @@
             "type": "string"
           },
           "status": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "Active",
+              "Error"
+            ]
           }
         },
         "required": [
@@ -487,7 +491,11 @@
             "type": "string"
           },
           "device": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "disk",
+              "cdrom"
+            ]
           },
           "path": {
             "type": "string"
