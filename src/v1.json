@@ -7,11 +7,7 @@
     "title": "CharVstack-API",
     "version": "1.0"
   },
-  "servers": [
-    {
-      "url": "http://dev.charv.test:8080"
-    }
-  ],
+  "servers": [],
   "paths": {
     "/api/v1/vms": {
       "post": {
