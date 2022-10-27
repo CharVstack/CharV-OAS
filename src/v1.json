@@ -341,7 +341,8 @@
             "type": "string",
             "enum": [
               "disk",
-              "cdrom"
+              "cdrom",
+              "unknown"
             ]
           },
           "path": {
