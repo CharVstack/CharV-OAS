@@ -411,7 +411,12 @@
               "$ref": "#/components/schemas/StoragePool"
             }
           }
-        }
+        },
+        "required": [
+          "cpu",
+          "mem",
+          "storage_pools"
+        ]
       }
     },
     "responses": {
