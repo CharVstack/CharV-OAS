@@ -331,7 +331,11 @@
         "type": "object",
         "properties": {
           "type": {
-            "type": "string"
+            "type": "string",
+            "enum": [
+              "unknown",
+              "qcow2"
+            ]
           },
           "device": {
             "type": "string",
