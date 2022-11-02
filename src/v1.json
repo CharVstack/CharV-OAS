@@ -76,7 +76,8 @@
       "parameters": [
         {
           "schema": {
-            "type": "string"
+            "type": "string",
+            "format": "uuid"
           },
           "name": "vmId",
           "in": "path",
@@ -154,6 +155,69 @@
         "description": "ホスト情報を取得する"
       },
       "parameters": []
+    },
+    "/api/v1/vms/{vmId}/power": {
+      "parameters": [
+        {
+          "schema": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": "vmId",
+          "in": "path",
+          "required": true
+        }
+      ],
+      "post": {
+        "summary": "Change Power Status",
+        "operationId": "post-api-v1-vms-:vmId-power-:action",
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "parameters": [
+          {
+            "schema": {
+              "type": "string",
+              "enum": [
+                "start",
+                "suspend",
+                "reset",
+                "stop"
+              ]
+            },
+            "in": "query",
+            "name": "action"
+          }
+        ],
+        "description": "VMの電源状態を操作",
+        "tags": [
+          "vm"
+        ]
+      },
+      "get": {
+        "summary": "Get Power State",
+        "operationId": "get-api-v1-vms-:vmId-power",
+        "responses": {
+          "200": {
+            "$ref": "#/components/responses/GetVMPowerByVMId200Response"
+          }
+        },
+        "description": "VMの電源状態を取得",
+        "tags": [
+          "vm"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VmPowerInfo"
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -429,6 +493,30 @@
           "mem",
           "storage_pools"
         ]
+      },
+      "VmPowerInfo": {
+        "title": "VmPowerInfo",
+        "x-stoplight": {
+          "id": "wpghfmungd2n5"
+        },
+        "type": "object",
+        "properties": {
+          "clean_power_off": {
+            "type": "boolean"
+          },
+          "state": {
+            "type": "string",
+            "enum": [
+              "POWERED_OFF",
+              "POWERED_ON",
+              "SUSPENDED"
+            ]
+          }
+        },
+        "required": [
+          "clean_power_off",
+          "state"
+        ]
       }
     },
     "responses": {
@@ -463,7 +551,7 @@
               },
               "type": "object",
               "properties": {
-                "vms": {
+                "data": {
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/Vm"
@@ -474,13 +562,13 @@
                 }
               },
               "required": [
-                "vms"
+                "data"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "vms": [
+                  "data": [
                     {
                       "name": "ubuntu",
                       "metadata": {
@@ -514,7 +602,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "vm": {
+                "data": {
                   "$ref": "#/components/schemas/Vm"
                 },
                 "message": {
@@ -522,13 +610,13 @@
                 }
               },
               "required": [
-                "vm"
+                "data"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "vm": {
+                  "data": {
                     "name": "ubuntu",
                     "metadata": {
                       "id": "4e0a3c48-f483-422a-b520-2820207cef42",
@@ -561,7 +649,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "vm": {
+                "data": {
                   "$ref": "#/components/schemas/Vm"
                 },
                 "message": {
@@ -569,13 +657,13 @@
                 }
               },
               "required": [
-                "vm"
+                "data"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "vm": {
+                  "data": {
                     "name": "ubuntu",
                     "metadata": {
                       "id": "4e0a3c48-f483-422a-b520-2820207cef42",
@@ -608,7 +696,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "vm": {
+                "data": {
                   "$ref": "#/components/schemas/Vm"
                 },
                 "message": {
@@ -616,13 +704,13 @@
                 }
               },
               "required": [
-                "vm"
+                "data"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "vm": {
+                  "data": {
                     "name": "ubuntu",
                     "metadata": {
                       "id": "4e0a3c48-f483-422a-b520-2820207cef42",
@@ -655,7 +743,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "host": {
+                "data": {
                   "$ref": "#/components/schemas/Host"
                 },
                 "message": {
@@ -663,13 +751,13 @@
                 }
               },
               "required": [
-                "host"
+                "data"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "host": {
+                  "data": {
                     "cpu": {
                       "counts": 0,
                       "percent": 0
@@ -689,6 +777,38 @@
                         "status": "Active"
                       }
                     ]
+                  },
+                  "message": "string"
+                }
+              }
+            }
+          }
+        }
+      },
+      "GetVMPowerByVMId200Response": {
+        "description": "VMの電源情報",
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "data": {
+                  "$ref": "#/components/schemas/VmPowerInfo"
+                },
+                "message": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "data"
+              ]
+            },
+            "examples": {
+              "example-1": {
+                "value": {
+                  "data": {
+                    "clean_power_off": true,
+                    "state": "POWERED_OFF"
                   },
                   "message": "string"
                 }
