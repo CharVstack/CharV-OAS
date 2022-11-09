@@ -1,4 +1,4 @@
-package: models
+package: adapters
 generate:
   models: true
 output: backend/adapters/models.gen.go
