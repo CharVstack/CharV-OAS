@@ -25,7 +25,7 @@ BEGIN {
   print $0"\n" >> "./backend/domain/models/models.gen.go"
   print $1 >> "./backend/adapters/types.gen.go"
   print $2 >> "./backend/adapters/types.gen.go"
-  print "\"github.com/CharV-Stack/CharV-backend/domain/models\"" >> "./backend/adapters/types.gen.go"
+  print "\"github.com/CharVstack/CharV-backend/domain/models\"" >> "./backend/adapters/types.gen.go"
   print $3"\n" >> "./backend/adapters/types.gen.go"
 }
 
