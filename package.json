@@ -20,7 +20,7 @@
   "scripts": {
     "lint": "spectral lint ./src/*",
     "generate:go:server:v1": "oapi-codegen -config gin/server.config.yaml src/v1.json",
-    "generate:go:models:v1": "oapi-codegen -config gin/models.config.yaml src/v1.json",
+    "generate:go:models:v1": "oapi-codegen -config gin/models.config.yaml src/v1.json && awk -f gin/repackage.awk backend/adapters/models.gen.go && rimraf backend/adapters/models.gen.go",
     "generate:typescript:v1": "openapi2aspida",
     "test": "npm-run-all test:*",
     "test:redoc": "redoc-cli test ./src/*",
