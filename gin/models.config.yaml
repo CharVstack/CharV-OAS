@@ -1,6 +1,6 @@
 package: models
 generate:
   models: true
-output: backend/domain/models/models.gen.go
+output: backend/adapters/models.gen.go
 output-options:
   skip-prune: true
