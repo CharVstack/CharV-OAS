@@ -283,14 +283,7 @@
         "x-tags": [
           "host"
         ],
-        "x-examples": {
-          "default": {
-            "total": 16526876672,
-            "used": 8849772544,
-            "free": 315400192,
-            "used_percent": 53.54776174371394
-          }
-        },
+        "x-examples": {},
         "description": "ホストのメモリ情報",
         "properties": {
           "total": {
