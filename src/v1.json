@@ -182,9 +182,9 @@
               "type": "string",
               "enum": [
                 "start",
-                "suspend",
-                "reset",
-                "stop"
+                "shutdown",
+                "reboot",
+                "reset"
               ]
             },
             "in": "query",
@@ -245,15 +245,6 @@
           },
           "devices": {
             "$ref": "#/components/schemas/Devices"
-          },
-          "status": {
-            "type": "string",
-            "enum": [
-              "error",
-              "active",
-              "pending",
-              "unknown"
-            ]
           }
         },
         "required": [
@@ -261,8 +252,7 @@
           "metadata",
           "memory",
           "vcpu",
-          "devices",
-          "status"
+          "devices"
         ]
       },
       "Cpu": {
@@ -475,9 +465,9 @@
           "state": {
             "type": "string",
             "enum": [
-              "POWERED_OFF",
-              "POWERED_ON",
-              "SUSPENDED"
+              "RUNNING",
+              "UNKNOWN",
+              "SHUTDOWN"
             ]
           }
         },
@@ -550,8 +540,7 @@
                             "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
                           }
                         ]
-                      },
-                      "status": "active"
+                      }
                     }
                   ]
                 }
@@ -594,8 +583,7 @@
                           "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
                         }
                       ]
-                    },
-                    "status": "pending"
+                    }
                   }
                 }
               }
@@ -637,8 +625,7 @@
                           "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
                         }
                       ]
-                    },
-                    "status": "active"
+                    }
                   }
                 }
               }
@@ -680,8 +667,7 @@
                           "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
                         }
                       ]
-                    },
-                    "status": "active"
+                    }
                   }
                 }
               }
@@ -754,7 +740,7 @@
                 "value": {
                   "data": {
                     "clean_power_off": true,
-                    "state": "POWERED_OFF"
+                    "state": "RUNNING"
                   }
                 }
               }
