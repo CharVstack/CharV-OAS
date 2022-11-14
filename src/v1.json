@@ -229,26 +229,7 @@
           "vm"
         ],
         "description": "仮想マシンを表すモデル",
-        "x-examples": {
-          "default": {
-            "name": "ubuntu20.04",
-            "metadata": {
-              "id": "4e0a3c48-f483-422a-b520-2820207cef42",
-              "api_version": "v1"
-            },
-            "memory": 2048,
-            "vcpu": 4,
-            "devices": {
-              "disk": [
-                {
-                  "type": "qcow2",
-                  "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
-                }
-              ]
-            },
-            "status": "active"
-          }
-        },
+        "x-examples": {},
         "properties": {
           "name": {
             "type": "string"
@@ -290,12 +271,7 @@
         "x-tags": [
           "host"
         ],
-        "x-examples": {
-          "default": {
-            "counts": 4,
-            "percent": 5
-          }
-        },
+        "x-examples": {},
         "description": "ホストのCPU情報",
         "properties": {
           "counts": {
@@ -357,15 +333,7 @@
         "x-tags": [
           "host"
         ],
-        "x-examples": {
-          "default": {
-            "name": "string",
-            "total_size": 1006530654208,
-            "used_size": 371360915456,
-            "path": "string",
-            "status": "Active"
-          }
-        },
+        "x-examples": {},
         "description": "ホストが持つストレージプールの情報",
         "properties": {
           "name": {
@@ -556,9 +524,6 @@
                   "items": {
                     "$ref": "#/components/schemas/Vm"
                   }
-                },
-                "message": {
-                  "type": "string"
                 }
               },
               "required": [
@@ -604,9 +569,6 @@
               "properties": {
                 "data": {
                   "$ref": "#/components/schemas/Vm"
-                },
-                "message": {
-                  "type": "string"
                 }
               },
               "required": [
@@ -634,8 +596,7 @@
                       ]
                     },
                     "status": "pending"
-                  },
-                  "message": ""
+                  }
                 }
               }
             }
@@ -651,9 +612,6 @@
               "properties": {
                 "data": {
                   "$ref": "#/components/schemas/Vm"
-                },
-                "message": {
-                  "type": "string"
                 }
               },
               "required": [
@@ -681,8 +639,7 @@
                       ]
                     },
                     "status": "active"
-                  },
-                  "message": ""
+                  }
                 }
               }
             }
@@ -698,9 +655,6 @@
               "properties": {
                 "data": {
                   "$ref": "#/components/schemas/Vm"
-                },
-                "message": {
-                  "type": "string"
                 }
               },
               "required": [
@@ -728,8 +682,7 @@
                       ]
                     },
                     "status": "active"
-                  },
-                  "message": ""
+                  }
                 }
               }
             }
@@ -745,9 +698,6 @@
               "properties": {
                 "data": {
                   "$ref": "#/components/schemas/Host"
-                },
-                "message": {
-                  "type": "string"
                 }
               },
               "required": [
@@ -759,26 +709,25 @@
                 "value": {
                   "data": {
                     "cpu": {
-                      "counts": 0,
-                      "percent": 0
+                      "counts": 8,
+                      "percent": 32
                     },
                     "mem": {
-                      "total": 0,
-                      "used": 0,
-                      "free": 0,
-                      "used_percent": 0
+                      "total": 16526876672,
+                      "used": 8849772544,
+                      "free": 315400192,
+                      "used_percent": 53.54776174371394
                     },
                     "storage_pools": [
                       {
-                        "name": "string",
-                        "total_size": 0,
-                        "used_size": 0,
-                        "path": "string",
+                        "name": "default",
+                        "total_size": 1006530654208,
+                        "used_size": 371360915456,
+                        "path": "/var/lig/libvirt/images",
                         "status": "Active"
                       }
                     ]
-                  },
-                  "message": "string"
+                  }
                 }
               }
             }
@@ -794,9 +743,6 @@
               "properties": {
                 "data": {
                   "$ref": "#/components/schemas/VmPowerInfo"
-                },
-                "message": {
-                  "type": "string"
                 }
               },
               "required": [
@@ -809,8 +755,7 @@
                   "data": {
                     "clean_power_off": true,
                     "state": "POWERED_OFF"
-                  },
-                  "message": "string"
+                  }
                 }
               }
             }
