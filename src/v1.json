@@ -336,8 +336,8 @@
           "status": {
             "type": "string",
             "enum": [
-              "Active",
-              "Error"
+              "ACTIVE",
+              "ERROR"
             ]
           }
         },
@@ -703,7 +703,7 @@
                         "total_size": 1006530654208,
                         "used_size": 371360915456,
                         "path": "/var/lig/libvirt/images",
-                        "status": "Active"
+                        "status": "ACTIVE"
                       }
                     ]
                   }
