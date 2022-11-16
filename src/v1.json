@@ -13,40 +13,6 @@
       "post": {
         "summary": "Create a new VM",
         "operationId": "post-api-v1-vms",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "memory": {
-                    "type": "integer"
-                  },
-                  "cpu": {
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "name",
-                  "memory",
-                  "cpu"
-                ]
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "name": "ubuntu20.04",
-                    "memory": 2048,
-                    "cpu": 4
-                  }
-                }
-              }
-            }
-          }
-        },
         "tags": [
           "vm"
         ],
@@ -55,6 +21,9 @@
           "200": {
             "$ref": "#/components/responses/PostCreateNewVM200Response"
           }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/PostCreateNewVMRequest"
         }
       },
       "get": {
@@ -108,36 +77,10 @@
         "tags": [
           "vm"
         ],
+        "description": "VM情報を更新する",
         "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "memory": {
-                    "type": "integer"
-                  },
-                  "cpu": {
-                    "type": "integer"
-                  }
-                }
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "name": "centos_stream",
-                    "memory": 1024,
-                    "cpu": 2
-                  }
-                }
-              }
-            }
-          }
-        },
-        "description": "VM情報を更新する"
+          "$ref": "#/components/requestBodies/PatchUpdateVMRequest"
+        }
       }
     },
     "/api/v1/host": {
@@ -207,16 +150,7 @@
         "description": "VMの電源状態を取得",
         "tags": [
           "vm"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/VmPowerInfo"
-              }
-            }
-          }
-        }
+        ]
       }
     }
   },
@@ -724,6 +658,78 @@
             }
           }
         }
+      }
+    },
+    "requestBodies": {
+      "PostCreateNewVMRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "integer"
+                },
+                "cpu": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "name",
+                "memory",
+                "cpu"
+              ]
+            },
+            "examples": {
+              "example-1": {
+                "value": {
+                  "name": "ubuntu22.04",
+                  "memory": 2048,
+                  "cpu": 4
+                }
+              }
+            }
+          }
+        },
+        "description": "VMの作成"
+      },
+      "PatchUpdateVMRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "integer"
+                },
+                "cpu": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "name",
+                "memory",
+                "cpu"
+              ]
+            },
+            "examples": {
+              "example-1": {
+                "value": {
+                  "name": "ubuntu20.04",
+                  "memory": 4096,
+                  "cpu": 12
+                }
+              }
+            }
+          }
+        },
+        "description": "VM情報の更新"
       }
     }
   },
