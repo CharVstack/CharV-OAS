@@ -367,7 +367,7 @@
           "cpu": {
             "$ref": "#/components/schemas/Cpu"
           },
-          "mem": {
+          "memory": {
             "$ref": "#/components/schemas/Memory"
           },
           "storage_pools": {
@@ -379,7 +379,7 @@
         },
         "required": [
           "cpu",
-          "mem",
+          "memory",
           "storage_pools"
         ]
       },
@@ -628,7 +628,7 @@
                       "counts": 8,
                       "percent": 32
                     },
-                    "mem": {
+                    "memory": {
                       "total": 16526876672,
                       "used": 8849772544,
                       "free": 315400192,
