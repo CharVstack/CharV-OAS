@@ -13,40 +13,6 @@
       "post": {
         "summary": "Create a new VM",
         "operationId": "post-api-v1-vms",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "memory": {
-                    "type": "integer"
-                  },
-                  "vcpu": {
-                    "type": "integer"
-                  }
-                },
-                "required": [
-                  "name",
-                  "memory",
-                  "vcpu"
-                ]
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "name": "ubuntu20.04",
-                    "memory": 2048,
-                    "vcpu": 4
-                  }
-                }
-              }
-            }
-          }
-        },
         "tags": [
           "vm"
         ],
@@ -55,6 +21,9 @@
           "200": {
             "$ref": "#/components/responses/PostCreateNewVM200Response"
           }
+        },
+        "requestBody": {
+          "$ref": "#/components/requestBodies/PostCreateNewVMRequest"
         }
       },
       "get": {
@@ -108,36 +77,10 @@
         "tags": [
           "vm"
         ],
+        "description": "VM情報を更新する",
         "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "type": "object",
-                "properties": {
-                  "name": {
-                    "type": "string"
-                  },
-                  "memory": {
-                    "type": "integer"
-                  },
-                  "vcpu": {
-                    "type": "integer"
-                  }
-                }
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "name": "centos_stream",
-                    "memory": 1024,
-                    "vcpu": 2
-                  }
-                }
-              }
-            }
-          }
-        },
-        "description": "VM情報を更新する"
+          "$ref": "#/components/requestBodies/PatchUpdateVMRequest"
+        }
       }
     },
     "/api/v1/host": {
@@ -207,16 +150,7 @@
         "description": "VMの電源状態を取得",
         "tags": [
           "vm"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/VmPowerInfo"
-              }
-            }
-          }
-        }
+        ]
       }
     }
   },
@@ -240,7 +174,7 @@
           "memory": {
             "type": "integer"
           },
-          "vcpu": {
+          "cpu": {
             "type": "integer"
           },
           "devices": {
@@ -251,7 +185,7 @@
           "name",
           "metadata",
           "memory",
-          "vcpu",
+          "cpu",
           "devices"
         ]
       },
@@ -356,6 +290,12 @@
         },
         "type": "object",
         "properties": {
+          "name": {
+            "type": "string"
+          },
+          "pool": {
+            "type": "string"
+          },
           "type": {
             "type": "string",
             "enum": [
@@ -370,15 +310,13 @@
               "cdrom",
               "unknown"
             ]
-          },
-          "path": {
-            "type": "string"
           }
         },
         "required": [
+          "name",
+          "pool",
           "type",
-          "device",
-          "path"
+          "device"
         ]
       },
       "Devices": {
@@ -429,7 +367,7 @@
           "cpu": {
             "$ref": "#/components/schemas/Cpu"
           },
-          "mem": {
+          "memory": {
             "$ref": "#/components/schemas/Memory"
           },
           "storage_pools": {
@@ -441,7 +379,7 @@
         },
         "required": [
           "cpu",
-          "mem",
+          "memory",
           "storage_pools"
         ]
       },
@@ -476,8 +414,22 @@
         "content": {
           "application/json": {
             "schema": {
-              "x-examples": {
-                "example-1": {
+              "type": "object",
+              "properties": {
+                "vms": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Vm"
+                  }
+                }
+              },
+              "required": [
+                "vms"
+              ]
+            },
+            "examples": {
+              "example-1": {
+                "value": {
                   "vms": [
                     {
                       "name": "ubuntu",
@@ -486,51 +438,33 @@
                         "api_version": "v1"
                       },
                       "memory": 2048,
-                      "vcpu": 4,
+                      "cpu": 4,
                       "devices": {
                         "disk": [
                           {
+                            "name": "ubuntu22.04",
+                            "pool": "default",
                             "type": "qcow2",
-                            "device": "disk",
-                            "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
+                            "device": "disk"
                           }
                         ]
                       }
-                    }
-                  ]
-                }
-              },
-              "type": "object",
-              "properties": {
-                "data": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Vm"
-                  }
-                }
-              },
-              "required": [
-                "data"
-              ]
-            },
-            "examples": {
-              "example-1": {
-                "value": {
-                  "data": [
+                    },
                     {
-                      "name": "ubuntu",
+                      "name": "fedora",
                       "metadata": {
-                        "id": "4e0a3c48-f483-422a-b520-2820207cef42",
+                        "id": "e073e8ee-c2d9-4b03-8d61-3fe3eeade0dd",
                         "api_version": "v1"
                       },
-                      "memory": 2048,
-                      "vcpu": 4,
+                      "memory": 8192,
+                      "cpu": 12,
                       "devices": {
                         "disk": [
                           {
+                            "name": "fedora",
+                            "pool": "default",
                             "type": "qcow2",
-                            "device": "disk",
-                            "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
+                            "device": "disk"
                           }
                         ]
                       }
@@ -549,31 +483,32 @@
             "schema": {
               "type": "object",
               "properties": {
-                "data": {
+                "vm": {
                   "$ref": "#/components/schemas/Vm"
                 }
               },
               "required": [
-                "data"
+                "vm"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "data": {
+                  "vm": {
                     "name": "ubuntu",
                     "metadata": {
                       "id": "4e0a3c48-f483-422a-b520-2820207cef42",
                       "api_version": "v1"
                     },
                     "memory": 2048,
-                    "vcpu": 4,
+                    "cpu": 4,
                     "devices": {
                       "disk": [
                         {
+                          "name": "ubuntu22.04",
+                          "pool": "default",
                           "type": "qcow2",
-                          "device": "disk",
-                          "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
+                          "device": "disk"
                         }
                       ]
                     }
@@ -591,31 +526,32 @@
             "schema": {
               "type": "object",
               "properties": {
-                "data": {
+                "vm": {
                   "$ref": "#/components/schemas/Vm"
                 }
               },
               "required": [
-                "data"
+                "vm"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "data": {
+                  "vm": {
                     "name": "ubuntu",
                     "metadata": {
                       "id": "4e0a3c48-f483-422a-b520-2820207cef42",
                       "api_version": "v1"
                     },
                     "memory": 2048,
-                    "vcpu": 4,
+                    "cpu": 4,
                     "devices": {
                       "disk": [
                         {
+                          "name": "ubuntu22.04",
+                          "pool": "default",
                           "type": "qcow2",
-                          "device": "disk",
-                          "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
+                          "device": "disk"
                         }
                       ]
                     }
@@ -633,31 +569,32 @@
             "schema": {
               "type": "object",
               "properties": {
-                "data": {
+                "vm": {
                   "$ref": "#/components/schemas/Vm"
                 }
               },
               "required": [
-                "data"
+                "vm"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "data": {
+                  "vm": {
                     "name": "ubuntu",
                     "metadata": {
                       "id": "4e0a3c48-f483-422a-b520-2820207cef42",
                       "api_version": "v1"
                     },
                     "memory": 2048,
-                    "vcpu": 4,
+                    "cpu": 4,
                     "devices": {
                       "disk": [
                         {
+                          "name": "ubuntu22.04",
+                          "pool": "default",
                           "type": "qcow2",
-                          "device": "disk",
-                          "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
+                          "device": "disk"
                         }
                       ]
                     }
@@ -675,23 +612,23 @@
             "schema": {
               "type": "object",
               "properties": {
-                "data": {
+                "host": {
                   "$ref": "#/components/schemas/Host"
                 }
               },
               "required": [
-                "data"
+                "host"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "data": {
+                  "host": {
                     "cpu": {
                       "counts": 8,
                       "percent": 32
                     },
-                    "mem": {
+                    "memory": {
                       "total": 16526876672,
                       "used": 8849772544,
                       "free": 315400192,
@@ -720,18 +657,18 @@
             "schema": {
               "type": "object",
               "properties": {
-                "data": {
+                "vm_power": {
                   "$ref": "#/components/schemas/VmPowerInfo"
                 }
               },
               "required": [
-                "data"
+                "vm_power"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "data": {
+                  "vm_power": {
                     "clean_power_off": true,
                     "state": "RUNNING"
                   }
@@ -740,6 +677,78 @@
             }
           }
         }
+      }
+    },
+    "requestBodies": {
+      "PostCreateNewVMRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "integer"
+                },
+                "cpu": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "name",
+                "memory",
+                "cpu"
+              ]
+            },
+            "examples": {
+              "example-1": {
+                "value": {
+                  "name": "ubuntu22.04",
+                  "memory": 2048,
+                  "cpu": 4
+                }
+              }
+            }
+          }
+        },
+        "description": "VMの作成"
+      },
+      "PatchUpdateVMRequest": {
+        "content": {
+          "application/json": {
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "memory": {
+                  "type": "integer"
+                },
+                "cpu": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "name",
+                "memory",
+                "cpu"
+              ]
+            },
+            "examples": {
+              "example-1": {
+                "value": {
+                  "name": "ubuntu20.04",
+                  "memory": 4096,
+                  "cpu": 12
+                }
+              }
+            }
+          }
+        },
+        "description": "VM情報の更新"
       }
     }
   },
