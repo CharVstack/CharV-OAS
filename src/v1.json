@@ -416,7 +416,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "data": {
+                "vms": {
                   "type": "array",
                   "items": {
                     "$ref": "#/components/schemas/Vm"
@@ -424,13 +424,13 @@
                 }
               },
               "required": [
-                "data"
+                "vms"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "data": [
+                  "vms": [
                     {
                       "name": "ubuntu",
                       "metadata": {
@@ -464,18 +464,18 @@
             "schema": {
               "type": "object",
               "properties": {
-                "data": {
+                "vm": {
                   "$ref": "#/components/schemas/Vm"
                 }
               },
               "required": [
-                "data"
+                "vm"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "data": {
+                  "vm": {
                     "name": "ubuntu",
                     "metadata": {
                       "id": "4e0a3c48-f483-422a-b520-2820207cef42",
@@ -507,18 +507,18 @@
             "schema": {
               "type": "object",
               "properties": {
-                "data": {
+                "vm": {
                   "$ref": "#/components/schemas/Vm"
                 }
               },
               "required": [
-                "data"
+                "vm"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "data": {
+                  "vm": {
                     "name": "ubuntu",
                     "metadata": {
                       "id": "4e0a3c48-f483-422a-b520-2820207cef42",
@@ -550,18 +550,18 @@
             "schema": {
               "type": "object",
               "properties": {
-                "data": {
+                "vm": {
                   "$ref": "#/components/schemas/Vm"
                 }
               },
               "required": [
-                "data"
+                "vm"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "data": {
+                  "vm": {
                     "name": "ubuntu",
                     "metadata": {
                       "id": "4e0a3c48-f483-422a-b520-2820207cef42",
@@ -593,18 +593,18 @@
             "schema": {
               "type": "object",
               "properties": {
-                "data": {
+                "host": {
                   "$ref": "#/components/schemas/Host"
                 }
               },
               "required": [
-                "data"
+                "host"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "data": {
+                  "host": {
                     "cpu": {
                       "counts": 8,
                       "percent": 32
@@ -638,18 +638,18 @@
             "schema": {
               "type": "object",
               "properties": {
-                "data": {
+                "vm_power": {
                   "$ref": "#/components/schemas/VmPowerInfo"
                 }
               },
               "required": [
-                "data"
+                "vm_power"
               ]
             },
             "examples": {
               "example-1": {
                 "value": {
-                  "data": {
+                  "vm_power": {
                     "clean_power_off": true,
                     "state": "RUNNING"
                   }
