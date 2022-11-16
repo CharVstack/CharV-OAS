@@ -356,6 +356,12 @@
         },
         "type": "object",
         "properties": {
+          "name": {
+            "type": "string"
+          },
+          "pool": {
+            "type": "string"
+          },
           "type": {
             "type": "string",
             "enum": [
@@ -370,15 +376,13 @@
               "cdrom",
               "unknown"
             ]
-          },
-          "path": {
-            "type": "string"
           }
         },
         "required": [
+          "name",
+          "pool",
           "type",
-          "device",
-          "path"
+          "device"
         ]
       },
       "Devices": {
@@ -476,30 +480,6 @@
         "content": {
           "application/json": {
             "schema": {
-              "x-examples": {
-                "example-1": {
-                  "vms": [
-                    {
-                      "name": "ubuntu",
-                      "metadata": {
-                        "id": "4e0a3c48-f483-422a-b520-2820207cef42",
-                        "api_version": "v1"
-                      },
-                      "memory": 2048,
-                      "vcpu": 4,
-                      "devices": {
-                        "disk": [
-                          {
-                            "type": "qcow2",
-                            "device": "disk",
-                            "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
-                          }
-                        ]
-                      }
-                    }
-                  ]
-                }
-              },
               "type": "object",
               "properties": {
                 "data": {
@@ -528,9 +508,10 @@
                       "devices": {
                         "disk": [
                           {
+                            "name": "ubuntu22.04",
+                            "pool": "default",
                             "type": "qcow2",
-                            "device": "disk",
-                            "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
+                            "device": "disk"
                           }
                         ]
                       }
@@ -571,9 +552,10 @@
                     "devices": {
                       "disk": [
                         {
+                          "name": "ubuntu22.04",
+                          "pool": "default",
                           "type": "qcow2",
-                          "device": "disk",
-                          "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
+                          "device": "disk"
                         }
                       ]
                     }
@@ -613,9 +595,10 @@
                     "devices": {
                       "disk": [
                         {
+                          "name": "ubuntu22.04",
+                          "pool": "default",
                           "type": "qcow2",
-                          "device": "disk",
-                          "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
+                          "device": "disk"
                         }
                       ]
                     }
@@ -655,9 +638,10 @@
                     "devices": {
                       "disk": [
                         {
+                          "name": "ubuntu22.04",
+                          "pool": "default",
                           "type": "qcow2",
-                          "device": "disk",
-                          "path": "/var/lib/libvirt/images/ubuntu22.04.qcow2"
+                          "device": "disk"
                         }
                       ]
                     }
