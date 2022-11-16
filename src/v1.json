@@ -449,6 +449,25 @@
                           }
                         ]
                       }
+                    },
+                    {
+                      "name": "fedora",
+                      "metadata": {
+                        "id": "e073e8ee-c2d9-4b03-8d61-3fe3eeade0dd",
+                        "api_version": "v1"
+                      },
+                      "memory": 8192,
+                      "cpu": 12,
+                      "devices": {
+                        "disk": [
+                          {
+                            "name": "fedora",
+                            "pool": "default",
+                            "type": "qcow2",
+                            "device": "disk"
+                          }
+                        ]
+                      }
                     }
                   ]
                 }
