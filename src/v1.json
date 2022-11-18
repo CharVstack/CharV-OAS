@@ -23,7 +23,38 @@
           }
         },
         "requestBody": {
-          "$ref": "#/components/requestBodies/PostCreateNewVMRequest"
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "memory": {
+                    "type": "integer"
+                  },
+                  "cpu": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "name",
+                  "memory",
+                  "cpu"
+                ]
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "name": "ubuntu20.04",
+                    "memory": 4096,
+                    "cpu": 12
+                  }
+                }
+              }
+            }
+          }
         }
       },
       "get": {
@@ -79,7 +110,33 @@
         ],
         "description": "VM情報を更新する",
         "requestBody": {
-          "$ref": "#/components/requestBodies/PatchUpdateVMRequest"
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "memory": {
+                    "type": "integer"
+                  },
+                  "cpu": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "examples": {
+                "example-1": {
+                  "value": {
+                    "name": "ubuntu20.04",
+                    "memory": 4096,
+                    "cpu": 12
+                  }
+                }
+              }
+            }
+          }
         }
       }
     },
