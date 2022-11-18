@@ -32,10 +32,12 @@
                     "type": "string"
                   },
                   "memory": {
-                    "type": "integer"
+                    "type": "integer",
+                    "format": "uint64"
                   },
                   "cpu": {
-                    "type": "integer"
+                    "type": "integer",
+                    "format": "uint64"
                   }
                 },
                 "required": [
@@ -119,10 +121,12 @@
                     "type": "string"
                   },
                   "memory": {
-                    "type": "integer"
+                    "type": "integer",
+                    "format": "uint64"
                   },
                   "cpu": {
-                    "type": "integer"
+                    "type": "integer",
+                    "format": "uint64"
                   }
                 }
               },
