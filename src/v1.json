@@ -233,10 +233,12 @@
             "$ref": "#/components/schemas/Metadata"
           },
           "memory": {
-            "type": "integer"
+            "type": "integer",
+            "format": "uint64"
           },
           "cpu": {
-            "type": "integer"
+            "type": "integer",
+            "format": "uint64"
           },
           "devices": {
             "$ref": "#/components/schemas/Devices"
