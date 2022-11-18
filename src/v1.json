@@ -36,8 +36,7 @@
                     "format": "uint64"
                   },
                   "cpu": {
-                    "type": "integer",
-                    "format": "uint64"
+                    "type": "integer"
                   }
                 },
                 "required": [
@@ -125,8 +124,7 @@
                     "format": "uint64"
                   },
                   "cpu": {
-                    "type": "integer",
-                    "format": "uint64"
+                    "type": "integer"
                   }
                 }
               },
@@ -237,8 +235,7 @@
             "format": "uint64"
           },
           "cpu": {
-            "type": "integer",
-            "format": "uint64"
+            "type": "integer"
           },
           "devices": {
             "$ref": "#/components/schemas/Devices"
