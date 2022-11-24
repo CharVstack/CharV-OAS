@@ -9,6 +9,7 @@ on:
     paths:
       - "src/v1.json"
       - ".github/workflows/generate_backend.yaml"
+      - "package.json"
       - "gin/*"
 
 jobs:
