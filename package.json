@@ -8,7 +8,7 @@
     "@stoplight/spectral-cli": "^6.4.0",
     "lint-staged": "^12.4.2",
     "npm-run-all": "^4.1.5",
-    "openapi2aspida": "https://github.com/gamoutatsumi/openapi2aspida#feature/support-responses",
+    "openapi2aspida": "^0.21.0",
     "redoc-cli": "^0.13.14",
     "rimraf": "^3.0.2",
     "simple-git-hooks": "^2.8.0",
@@ -21,7 +21,7 @@
     "lint": "spectral lint ./src/*",
     "generate:go:server:v1": "oapi-codegen -config gin/server.config.yaml src/v1.json",
     "generate:go:models:v1": "oapi-codegen -config gin/models.config.yaml src/v1.json && awk -f gin/repackage.awk backend/adapters/models.gen.go && rimraf backend/adapters/models.gen.go",
-    "generate:typescript:v1": "openapi2aspida",
+    "generate:typescript:v1": "rimraf ./frontend/src/api-hooks/v1 && openapi2aspida",
     "test": "npm-run-all test:*",
     "test:redoc": "redoc-cli test ./src/*",
     "test:oas": "find ./src -name \"*.json\" -exec openapi-generator-cli validate -i {} \\;",
@@ -31,5 +31,6 @@
   "simple-git-hooks": {
     "pre-commit": "yarn run lint-staged",
     "pre-push": "yarn test"
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }

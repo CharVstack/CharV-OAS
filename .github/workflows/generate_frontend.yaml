@@ -5,6 +5,7 @@ on:
     paths:
       - "src/v1.json"
       - ".github/workflows/generate_frontend.yaml"
+      - "package.json"
     types:
       - closed
     branches:
