@@ -455,6 +455,19 @@
           "clean_power_off",
           "state"
         ]
+      },
+      "VmPowerActions": {
+        "title": "VmPowerActions",
+        "x-stoplight": {
+          "id": "08hmvzdi11rcu"
+        },
+        "type": "string",
+        "enum": [
+          "start",
+          "shutdown",
+          "reboot",
+          "reset"
+        ]
       }
     },
     "responses": {
@@ -806,13 +819,7 @@
               "type": "object",
               "properties": {
                 "action": {
-                  "type": "string",
-                  "enum": [
-                    "start",
-                    "shutdown",
-                    "reboot",
-                    "reset"
-                  ]
+                  "$ref": "#/components/schemas/VmPowerActions"
                 }
               },
               "required": [
