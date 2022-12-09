@@ -2,35 +2,22 @@ name: Test
 
 on:
   pull_request:
-    branches: 
-      - main 
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
-      with:
-        ref: ${{ github.head_ref }}
+      - uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
 
-    - name: Setup node
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
-        cache: 'yarn'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "yarn"
 
-    - name: Get yarn cache directory path
-      id: yarn-cache-dir-path
-      run: echo "::set-output name=dir::$(yarn cache dir)"
+      - run: yarn install --frozen-lockfile --prefer-offline
 
-    - uses: actions/cache@v3
-      id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
-      with:
-        path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
-        key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-        restore-keys: |
-          ${{ runner.os }}-yarn-
-
-    - run: yarn install --frozen-lockfile
-
-    - run: yarn test
+      - run: yarn test
