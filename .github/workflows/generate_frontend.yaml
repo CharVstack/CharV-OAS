@@ -41,7 +41,7 @@ jobs:
           repository: CharVstack/CharV-frontend
           path: frontend
 
-      - run: yarn install --forzen-lockfile
+      - run: yarn install --forzen-lockfile --prefer-offline
         working-directory: ./frontend
 
       - name: Clean Directory
