@@ -703,7 +703,8 @@
                   "type": "string"
                 },
                 "memory": {
-                  "type": "integer"
+                  "type": "integer",
+                  "format": "uint64"
                 },
                 "cpu": {
                   "type": "integer"
@@ -738,7 +739,8 @@
                   "type": "string"
                 },
                 "memory": {
-                  "type": "integer"
+                  "type": "integer",
+                  "format": "uint64"
                 },
                 "cpu": {
                   "type": "integer"
